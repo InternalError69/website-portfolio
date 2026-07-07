@@ -10,9 +10,9 @@
   --font-pixel: 'Press Start 2P', 'Courier New', monospace;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: rgba(0, 255, 65, 0.25); }
 
-html { scroll-behavior: smooth; scroll-padding-top: 4rem; }
+html { scroll-behavior: smooth; scroll-padding-top: 4rem; -webkit-text-size-adjust: 100%; }
 
 body {
   background: var(--bg);
@@ -271,11 +271,48 @@ body.glitch { animation: glitch 0.55s steps(2) 3; }
 /* ---------- Mobile ---------- */
 @media (max-width: 640px) {
   body { font-size: 1.2rem; }
+  main { padding: 0 0.85rem; }
   .screen { padding-top: 3rem; min-height: auto; }
+
+  /* Boot: shrink so ASCII lines don't overflow width */
+  #boot { padding: 1.25rem; }
+  #boot-text { font-size: 1.05rem; line-height: 1.35; }
+
+  /* HUD: horizontal-scroll rail instead of cramped wrap */
+  .hud-inner { flex-wrap: nowrap; gap: 0.5rem; padding: 0.4rem 0.75rem; }
+  .hud-logo { display: none; }
+  .hud-links {
+    flex-wrap: nowrap; overflow-x: auto; gap: 0.35rem;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  .hud-links::-webkit-scrollbar { display: none; }
+  .hud-link { padding: 0.4rem 0.4rem; white-space: nowrap; }
+  #sound-toggle { flex: 0 0 auto; padding: 0.35rem 0.55rem; }
+
   .hero { flex-direction: column-reverse; align-items: flex-start; gap: 1.5rem; }
   .hero-photo { align-self: center; }
-  .hud-logo { display: none; }
-  .hud-inner { justify-content: space-between; gap: 0.5rem; }
+  .hero-role { font-size: 1.4rem; }
+  .hero-links { gap: 0.6rem 1rem; }
+  .hero-links a { padding: 0.2rem 0; }
+  .btn-start { display: block; text-align: center; }
+
   .level-title { font-size: 0.9rem; }
   .quest-head h3 { font-size: 0.7rem; }
+  .terminal-window { padding: 1.6rem 1rem 1.1rem; }
+  .terminal-window::before { max-width: calc(100% - 2rem); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* Terminal: keep tappable + prevent overflow */
+  .contact-term { min-height: 260px; }
+  #term-output { max-height: 300px; }
+  #term-input { font-size: 1.2rem; min-width: 0; }
+
+  .award-list li { gap: 0.6rem; }
+}
+
+/* ---------- Small phones ---------- */
+@media (max-width: 380px) {
+  body { font-size: 1.1rem; }
+  #boot-text { font-size: 0.9rem; }
+  .hero-name { text-shadow: 0 0 12px rgba(0, 255, 65, 0.5), 2px 2px 0 var(--green-dim); }
+  .btn-start { font-size: 0.75rem; padding: 0.8rem 1rem; }
 }
