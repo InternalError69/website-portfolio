@@ -174,7 +174,18 @@ main { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
 .hero-photo figcaption { margin-top: 0.6rem; color: var(--green-mid); font-size: 1.1rem; }
 
 /* ---------- Quests / XP ---------- */
-.quest-list, .xp-timeline { display: flex; flex-direction: column; gap: 2rem; }
+.quest-list, .xp-timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem 1.5rem;
+  align-items: start;
+}
+@media (max-width: 1024px) {
+  .quest-list, .xp-timeline { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .quest-list, .xp-timeline { grid-template-columns: 1fr; }
+}
 .quest-head {
   display: flex; justify-content: space-between; align-items: baseline;
   gap: 0.5rem 1rem; flex-wrap: wrap; margin-bottom: 0.5rem;

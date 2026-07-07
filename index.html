@@ -35,6 +35,7 @@
         <a href="#xp" class="hud-link">XP</a>
         <a href="#awards" class="hud-link">AWARDS</a>
         <a href="#contact" class="hud-link">CONTACT</a>
+        <a href="#terminal" class="hud-link" id="hud-terminal">TERMINAL</a>
       </div>
       <button id="sound-toggle" aria-pressed="false" title="Toggle sound effects">♪ OFF</button>
     </div>
@@ -70,9 +71,9 @@
       </div>
     </section>
 
-    <!-- ============ LEVEL 1: QUESTS ============ -->
+    <!-- ============ QUESTS ============ -->
     <section id="quests" class="screen">
-      <h2 class="level-title"><span class="level-tag">LEVEL 1</span> QUESTS</h2>
+      <h2 class="level-title"><span class="level-tag">QUESTS</span></h2>
       <div class="quest-list">
 
         <article class="terminal-window quest" data-title="tokelang.quest">
@@ -123,9 +124,9 @@
       </div>
     </section>
 
-    <!-- ============ LEVEL 2: XP ============ -->
+    <!-- ============ XP ============ -->
     <section id="xp" class="screen">
-      <h2 class="level-title"><span class="level-tag">LEVEL 2</span> XP LOG</h2>
+      <h2 class="level-title"><span class="level-tag">XP LOG</span></h2>
       <div class="xp-timeline">
 
         <article class="terminal-window xp-entry" data-title="hdfc_life.log">
@@ -164,9 +165,9 @@
       </div>
     </section>
 
-    <!-- ============ LEVEL 3: ACHIEVEMENTS ============ -->
+    <!-- ============ ACHIEVEMENTS ============ -->
     <section id="awards" class="screen">
-      <h2 class="level-title"><span class="level-tag">LEVEL 3</span> ACHIEVEMENTS</h2>
+      <h2 class="level-title"><span class="level-tag">ACHIEVEMENTS</span></h2>
       <div class="terminal-window" data-title="trophies.sav">
         <ul class="award-list">
           <li><span class="award-rank gold">1ST</span> RVCE Pitch-It Ideathon (2025) — Tokelang-based token-optimization system: compression ratios, latency gains, task accuracy.</li>
@@ -181,8 +182,8 @@
 
     <!-- ============ CONTACT ============ -->
     <section id="contact" class="screen">
-      <h2 class="level-title"><span class="level-tag">FINAL</span> CONTINUE? <span class="continue-yes">▶ YES</span></h2>
-      <div class="terminal-window contact-term" data-title="guest@shashi:~">
+      <h2 class="level-title"><span class="level-tag">CONTINUE?</span> <span class="continue-yes">▶ YES</span></h2>
+      <div class="terminal-window contact-term" id="terminal" data-title="guest@shashi:~">
         <div id="term-output">
           <p>SHASHI-OS terminal v2.6 — type <strong>help</strong> for commands.</p>
         </div>

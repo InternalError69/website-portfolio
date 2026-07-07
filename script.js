@@ -100,15 +100,15 @@ async function runBoot() {
   boot.addEventListener('click', endBoot);
   for (const line of BOOT_LINES) {
     if (bootDone) return;
-    await typeText(bootText, line + '\n', 8);
-    await new Promise((r) => setTimeout(r, 100));
+    await typeText(bootText, line + '\n', 3);
+    await new Promise((r) => setTimeout(r, 25));
   }
-  setTimeout(endBoot, 500);
+  setTimeout(endBoot, 200);
 }
 
 /* ================= HERO ROLE CYCLER ================= */
 const roleEl = document.getElementById('role-type');
-const ROLES = ['AI ENGINEER', 'RUST DEVELOPER', 'SECURITY RESEARCHER', 'CREATOR OF TOKELANG', 'SELF-HOSTING ENJOYER'];
+const ROLES = ['AI ENGINEER', 'GAMER', 'SECURITY RESEARCHER', 'CREATOR OF TOKELANG', 'SELF-HOSTING ENTHUSIAST'];
 let rolesStarted = false;
 async function startHeroRoles() {
   if (rolesStarted) return;
@@ -241,6 +241,10 @@ termInput.addEventListener('keydown', (e) => {
     termPrint(`bash: ${raw}: command not found — try 'help'`, 'term-err');
     Sound.error();
   }
+});
+
+document.getElementById('hud-terminal').addEventListener('click', () => {
+  setTimeout(() => termInput.focus({ preventScroll: true }), 400);
 });
 
 /* ================= TOAST + KONAMI ================= */
