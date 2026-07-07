@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shashi Vadhan — AI Engineer</title>
+  <meta name="description" content="Shashi Vadhan — AI engineer, Rust developer, and security researcher. Creator of Tokelang (patent-published token compression for LLMs). Portfolio, projects, and contact.">
+  <meta property="og:title" content="Shashi Vadhan — AI Engineer">
+  <meta property="og:description" content="AI · Rust · Security. Creator of Tokelang. IEEE-published intrusion detection research.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230a0e0a'/%3E%3Ctext x='8' y='12' font-size='11' font-family='monospace' fill='%2300ff41' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- CRT overlay effects -->
+  <div class="crt-scanlines" aria-hidden="true"></div>
+  <div class="crt-vignette" aria-hidden="true"></div>
+
+  <!-- Boot sequence -->
+  <div id="boot" role="status" aria-label="Loading">
+    <pre id="boot-text"></pre>
+    <p class="boot-skip">[ PRESS ANY KEY TO SKIP ]</p>
+  </div>
+
+  <!-- HUD nav -->
+  <nav id="hud" aria-label="Main navigation">
+    <div class="hud-inner">
+      <a class="hud-logo" href="#start">SHASHI.EXE</a>
+      <div class="hud-links">
+        <a href="#start" class="hud-link active">START</a>
+        <a href="#quests" class="hud-link">QUESTS</a>
+        <a href="#xp" class="hud-link">XP</a>
+        <a href="#awards" class="hud-link">AWARDS</a>
+        <a href="#contact" class="hud-link">CONTACT</a>
+      </div>
+      <button id="sound-toggle" aria-pressed="false" title="Toggle sound effects">♪ OFF</button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ============ START / HERO ============ -->
+    <section id="start" class="screen">
+      <div class="hero">
+        <div class="hero-text">
+          <p class="hero-pre">&gt; initializing player_1...</p>
+          <h1 class="hero-name">SHASHI<br>VADHAN</h1>
+          <p class="hero-role">&gt; <span id="role-type"></span><span class="cursor">▮</span></p>
+          <p class="hero-blurb">
+            Builder of <a href="https://tokelang.com" target="_blank" rel="noopener">Tokelang</a> —
+            a patent-published token-compression language for LLMs, written in Rust.
+            IEEE-published in AI-driven cybersecurity. I like making machines do more with less.
+          </p>
+          <a href="#quests" class="btn-start">▶ PRESS START</a>
+          <div class="hero-links">
+            <a href="https://github.com/InternalError69" target="_blank" rel="noopener">[GITHUB]</a>
+            <a href="https://linkedin.com/in/shashi-vadhan" target="_blank" rel="noopener">[LINKEDIN]</a>
+            <a href="https://tokelang.com" target="_blank" rel="noopener">[TOKELANG]</a>
+            <a href="mailto:shashivadhan2003@gmail.com">[EMAIL]</a>
+            <a href="resume-7-7-26.pdf" download>[RESUME.PDF]</a>
+          </div>
+        </div>
+        <figure class="hero-photo terminal-window" data-title="webcam_feed.raw">
+          <img src="shashi.jpg" alt="Photo of Shashi Vadhan" width="220" height="293">
+          <figcaption>&gt; PLAYER_1 // ONLINE</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ LEVEL 1: QUESTS ============ -->
+    <section id="quests" class="screen">
+      <h2 class="level-title"><span class="level-tag">LEVEL 1</span> QUESTS</h2>
+      <div class="quest-list">
+
+        <article class="terminal-window quest" data-title="tokelang.quest">
+          <header class="quest-head">
+            <h3><a href="https://tokelang.com" target="_blank" rel="noopener">TOKELANG</a></h3>
+            <span class="quest-badge amber">★ PATENT PUBLISHED</span>
+          </header>
+          <p class="quest-sub">&gt; IPA App. No. 202541096177 · Rust · Open Source</p>
+          <ul>
+            <li>Token-efficient intermediary language for LLMs — ~90% built in Rust, self-taught from scratch in a few weeks.</li>
+            <li>Up to <strong>75% token reduction</strong>; cut API response latency from 50ms to 9.8ms avg.</li>
+            <li>Open-sourced a Claude Code skill + Tokelang Lite engine for GenAI co-pilot workflows.</li>
+            <li>In startup discussions for enterprise-scale deployment to cut LLM inference costs.</li>
+          </ul>
+          <p class="quest-status">&gt; STATUS: <span class="blink-slow">LEGENDARY</span></p>
+          <a href="https://tokelang.com" target="_blank" rel="noopener" class="btn-start btn-quest">▶ VISIT TOKELANG.COM</a>
+        </article>
+
+        <article class="terminal-window quest" data-title="ids_ml.quest">
+          <header class="quest-head">
+            <h3>IDS WITH ML — AI-DRIVEN CYBERSECURITY</h3>
+            <span class="quest-badge amber">★ PUBLISHED (IEEE)</span>
+          </header>
+          <p class="quest-sub">&gt; 2025 · CNN + Random Forest · IEEE Conference</p>
+          <ul>
+            <li>Intrusion Detection System: CNN for feature extraction + Random Forest classifier.</li>
+            <li>Trained and evaluated on CIC-IDS and NSL-KDD datasets.</li>
+            <li>Active-learning loop for adaptive threat classification.</li>
+          </ul>
+          <p class="quest-status">&gt; STATUS: <span class="blink-slow">COMPLETE</span></p>
+        </article>
+
+        <article class="terminal-window quest" data-title="homelab.quest">
+          <header class="quest-head">
+            <h3>SELF-HOSTED INFRASTRUCTURE</h3>
+            <span class="quest-badge">⟳ ONGOING</span>
+          </header>
+          <p class="quest-sub">&gt; 2025–present · TrueNAS · Docker · Cloudflare Tunnel</p>
+          <ul>
+            <li>Runs production services (incl. the Tokelang stack) on a TrueNAS server — exposed securely with no static IP or port forwarding via Cloudflare Tunnel.</li>
+            <li>Docker, Nginx reverse proxy, HTTPS via Certbot SSL/TLS.</li>
+            <li>Self-hosted SMTP stack (Postfix + Dovecot); solved blocked port 25 with a Brevo relay.</li>
+            <li>Monitoring, log analysis, and root-cause debugging across DNS, TLS, and routing.</li>
+          </ul>
+          <p class="quest-status">&gt; STATUS: <span class="blink-slow">IN PROGRESS</span></p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ LEVEL 2: XP ============ -->
+    <section id="xp" class="screen">
+      <h2 class="level-title"><span class="level-tag">LEVEL 2</span> XP LOG</h2>
+      <div class="xp-timeline">
+
+        <article class="terminal-window xp-entry" data-title="hdfc_life.log">
+          <header class="quest-head">
+            <h3>AI ENGINEER INTERN — HDFC LIFE</h3>
+            <span class="xp-date">AUG–OCT 2025 · BANGALORE</span>
+          </header>
+          <ul>
+            <li>Built Python ML pipelines extracting visual features from selfie images for automated user profiling.</li>
+            <li>Applied vision-capable LLMs (VLLMs) to infer age, gender, region — MAE ~5 years, <strong>99.5% accuracy</strong> on age classification.</li>
+            <li>Deployed and debugged containerized workloads (Docker on AWS EC2) in a production-like environment; root-cause analysis on inference and pipeline failures.</li>
+          </ul>
+        </article>
+
+        <article class="terminal-window xp-entry" data-title="education.log">
+          <header class="quest-head">
+            <h3>B.E. COMPUTER SCIENCE (IoT, CYBER SECURITY, BLOCKCHAIN)</h3>
+            <span class="xp-date">2022–2026 · CGPA 8.4/10</span>
+          </header>
+          <ul>
+            <li>Dayananda Sagar Academy of Technology and Management, Bangalore.</li>
+            <li>Coursework: OOP, DBMS, DSA, Operating Systems, Computer Networks, Machine Learning, AI.</li>
+          </ul>
+        </article>
+
+        <article class="terminal-window xp-entry" data-title="leadership.log">
+          <header class="quest-head">
+            <h3>HEAD — CYBER SECURITY CLUB (OCULUS AEGIS)</h3>
+            <span class="xp-date">2025–2026 · DSATM</span>
+          </header>
+          <ul>
+            <li>Founding member; created and ran technical and non-technical events for the department club.</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ LEVEL 3: ACHIEVEMENTS ============ -->
+    <section id="awards" class="screen">
+      <h2 class="level-title"><span class="level-tag">LEVEL 3</span> ACHIEVEMENTS</h2>
+      <div class="terminal-window" data-title="trophies.sav">
+        <ul class="award-list">
+          <li><span class="award-rank gold">1ST</span> RVCE Pitch-It Ideathon (2025) — Tokelang-based token-optimization system: compression ratios, latency gains, task accuracy.</li>
+          <li><span class="award-rank silver">2ND</span> Presidency University InnovateX Pitchathon (2026)</li>
+          <li><span class="award-rank silver">2ND</span> RVITM IPR Conclave</li>
+          <li><span class="award-rank bronze">3RD</span> CloudSEK Quantum Breach Hackathon (2025) — Isolation Forest RAT detection + OSINT early-warning scraper.</li>
+          <li><span class="award-rank bronze">3RD</span> IBM EcoEquify Hackathon (2023) — ML detection of industrial pollution via pH/turbidity/TDS anomalies.</li>
+        </ul>
+        <p class="cert-line">&gt; CERTS: IBM AI Developer (AI/ML/Deep Learning) · ServiceNow CSA &amp; CAD · CIL soft-skills</p>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="screen">
+      <h2 class="level-title"><span class="level-tag">FINAL</span> CONTINUE? <span class="continue-yes">▶ YES</span></h2>
+      <div class="terminal-window contact-term" data-title="guest@shashi:~">
+        <div id="term-output">
+          <p>SHASHI-OS terminal v2.6 — type <strong>help</strong> for commands.</p>
+        </div>
+        <div class="term-input-line">
+          <label for="term-input">guest@shashi:~$</label>
+          <input id="term-input" type="text" autocomplete="off" spellcheck="false" aria-label="Terminal command input">
+        </div>
+      </div>
+      <p class="contact-direct">
+        or skip the terminal: <a href="mailto:shashivadhan2003@gmail.com">shashivadhan2003@gmail.com</a> ·
+        <a href="tel:+918904887638">+91 8904887638</a> ·
+        <a href="https://linkedin.com/in/shashi-vadhan" target="_blank" rel="noopener">linkedin/shashi-vadhan</a>
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 SHASHI VADHAN — NO COINS REQUIRED</p>
+    <p class="footer-hint">HINT: ↑ ↑ ↓ ↓ ← → ← → B A</p>
+  </footer>
+
+  <div id="toast" role="alert" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+/* ================= CRT TERMINAL THEME ================= */
+:root {
+  --green: #00ff41;
+  --green-dim: #0f3d1e;
+  --green-mid: #1e7a3c;
+  --amber: #ffb000;
+  --bg: #0a0e0a;
+  --bg-panel: #0d130d;
+  --font-body: 'VT323', 'Courier New', monospace;
+  --font-pixel: 'Press Start 2P', 'Courier New', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 4rem; }
+
+body {
+  background: var(--bg);
+  color: var(--green);
+  font-family: var(--font-body);
+  font-size: 1.35rem;
+  line-height: 1.45;
+  overflow-x: hidden;
+  text-shadow: 0 0 6px rgba(0, 255, 65, 0.35);
+}
+
+a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+a:hover, a:focus-visible { color: var(--amber); text-shadow: 0 0 8px rgba(255, 176, 0, 0.6); }
+
+strong { color: var(--amber); font-weight: normal; }
+
+::selection { background: var(--green); color: var(--bg); text-shadow: none; }
+
+/* ---------- CRT overlays ---------- */
+.crt-scanlines {
+  position: fixed; inset: 0; z-index: 100; pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px, transparent 2px,
+    rgba(0, 0, 0, 0.25) 3px, rgba(0, 0, 0, 0.25) 4px
+  );
+  animation: flicker 4s infinite;
+}
+.crt-vignette {
+  position: fixed; inset: 0; z-index: 99; pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.5) 100%);
+}
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.82; }
+  94% { opacity: 1; }
+  97% { opacity: 0.9; }
+  98% { opacity: 1; }
+}
+
+/* ---------- Boot screen ---------- */
+#boot {
+  position: fixed; inset: 0; z-index: 200;
+  background: var(--bg);
+  padding: 2rem;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+#boot.hidden { display: none; }
+#boot-text { font-family: var(--font-body); font-size: 1.3rem; white-space: pre-wrap; }
+.boot-skip { color: var(--green-mid); animation: blink 1.2s step-end infinite; }
+
+/* ---------- HUD nav ---------- */
+#hud {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(10, 14, 10, 0.95);
+  border-bottom: 2px solid var(--green-dim);
+  backdrop-filter: blur(2px);
+}
+.hud-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0.5rem 1rem;
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+}
+.hud-logo {
+  font-family: var(--font-pixel); font-size: 0.7rem;
+  text-decoration: none; color: var(--amber);
+}
+.hud-links { display: flex; gap: 0.25rem 0.75rem; flex-wrap: wrap; flex: 1; }
+.hud-link { text-decoration: none; padding: 0.1rem 0.35rem; }
+.hud-link::before { content: "["; color: var(--green-dim); }
+.hud-link::after { content: "]"; color: var(--green-dim); }
+.hud-link.active { background: var(--green-dim); color: var(--amber); }
+#sound-toggle {
+  background: none; border: 1px solid var(--green-dim); color: var(--green-mid);
+  font-family: var(--font-body); font-size: 1.1rem; padding: 0.15rem 0.6rem;
+  cursor: pointer;
+}
+#sound-toggle[aria-pressed="true"] { color: var(--amber); border-color: var(--amber); }
+#sound-toggle:hover { border-color: var(--green); color: var(--green); }
+
+/* ---------- Sections ---------- */
+main { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+.screen { padding: 4.5rem 0 2rem; min-height: 55vh; }
+
+.level-title {
+  font-family: var(--font-pixel); font-size: 1.15rem;
+  margin-bottom: 2rem; line-height: 1.8;
+}
+.level-tag {
+  background: var(--green); color: var(--bg);
+  padding: 0.25rem 0.5rem; margin-right: 0.75rem;
+  text-shadow: none; display: inline-block;
+}
+.continue-yes { color: var(--amber); animation: blink 1s step-end infinite; }
+
+/* ---------- Terminal windows ---------- */
+.terminal-window {
+  border: 2px solid var(--green-dim);
+  background: var(--bg-panel);
+  padding: 1.75rem 1.25rem 1.25rem;
+  position: relative;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.terminal-window::before {
+  content: "┤ " attr(data-title) " ├";
+  position: absolute; top: -0.85rem; left: 1rem;
+  background: var(--bg); padding: 0 0.4rem;
+  color: var(--green-mid); font-size: 1.1rem;
+}
+.terminal-window:hover {
+  border-color: var(--green);
+  box-shadow: 0 0 18px rgba(0, 255, 65, 0.15), inset 0 0 30px rgba(0, 255, 65, 0.04);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  display: flex; gap: 2.5rem; align-items: center; justify-content: space-between;
+  flex-wrap: wrap;
+}
+.hero-text { flex: 1 1 480px; }
+.hero-pre { color: var(--green-mid); margin-bottom: 0.75rem; }
+.hero-name {
+  font-family: var(--font-pixel); font-size: clamp(1.8rem, 5.5vw, 3.2rem);
+  line-height: 1.35; margin-bottom: 1rem;
+  text-shadow: 0 0 12px rgba(0, 255, 65, 0.5), 3px 3px 0 var(--green-dim);
+}
+.hero-role { font-size: 1.6rem; min-height: 2.2rem; margin-bottom: 1rem; }
+.hero-blurb { max-width: 56ch; margin-bottom: 1.5rem; }
+.cursor { animation: blink 0.9s step-end infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.blink-slow { animation: blink 1.6s step-end infinite; color: var(--amber); }
+
+.btn-start {
+  display: inline-block;
+  font-family: var(--font-pixel); font-size: 0.85rem;
+  color: var(--bg); background: var(--green);
+  padding: 0.9rem 1.4rem; text-decoration: none; text-shadow: none;
+  border: 2px solid var(--green);
+  box-shadow: 4px 4px 0 var(--green-dim);
+}
+.btn-start:hover, .btn-start:focus-visible {
+  background: var(--amber); border-color: var(--amber); color: var(--bg);
+  box-shadow: 2px 2px 0 var(--green-dim);
+  transform: translate(2px, 2px);
+}
+.hero-links { margin-top: 1.5rem; display: flex; gap: 0.4rem 1rem; flex-wrap: wrap; }
+.hero-links a { text-decoration: none; }
+
+.hero-photo { flex: 0 0 auto; text-align: center; }
+.hero-photo img {
+  display: block; width: 220px; height: auto; max-width: 100%;
+  filter: grayscale(1) sepia(1) hue-rotate(75deg) saturate(3.5) brightness(0.9) contrast(1.15);
+  image-rendering: pixelated;
+}
+.hero-photo::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(to bottom, transparent 0 2px, rgba(0,0,0,0.28) 2px 4px);
+}
+.hero-photo figcaption { margin-top: 0.6rem; color: var(--green-mid); font-size: 1.1rem; }
+
+/* ---------- Quests / XP ---------- */
+.quest-list, .xp-timeline { display: flex; flex-direction: column; gap: 2rem; }
+.quest-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 0.5rem 1rem; flex-wrap: wrap; margin-bottom: 0.5rem;
+}
+.quest-head h3 { font-family: var(--font-pixel); font-size: 0.8rem; line-height: 1.7; }
+.quest-head h3 a { text-decoration: none; }
+.quest-badge {
+  font-size: 1.05rem; border: 1px solid var(--green-mid); color: var(--green-mid);
+  padding: 0.05rem 0.5rem; white-space: nowrap;
+}
+.quest-badge.amber { border-color: var(--amber); color: var(--amber); }
+.quest-sub, .xp-date { color: var(--green-mid); margin-bottom: 0.75rem; }
+.quest ul, .xp-entry ul { list-style: none; }
+.quest li, .xp-entry li { padding-left: 1.4rem; position: relative; margin-bottom: 0.35rem; }
+.quest li::before, .xp-entry li::before { content: ">"; position: absolute; left: 0.2rem; color: var(--green-mid); }
+.quest-status { margin-top: 0.9rem; color: var(--green-mid); }
+.btn-quest { font-size: 0.7rem; padding: 0.7rem 1.1rem; margin-top: 1rem; }
+
+/* ---------- Awards ---------- */
+.award-list { list-style: none; }
+.award-list li { margin-bottom: 0.8rem; display: flex; gap: 0.9rem; align-items: baseline; }
+.award-rank {
+  font-family: var(--font-pixel); font-size: 0.65rem;
+  padding: 0.3rem 0.45rem; text-shadow: none; white-space: nowrap;
+}
+.award-rank.gold { background: var(--amber); color: var(--bg); }
+.award-rank.silver { background: #b8c4b8; color: var(--bg); }
+.award-rank.bronze { background: #b07840; color: var(--bg); }
+.cert-line { margin-top: 1.25rem; color: var(--green-mid); }
+
+/* ---------- Contact terminal ---------- */
+.contact-term { min-height: 320px; display: flex; flex-direction: column; }
+#term-output { flex: 1; overflow-y: auto; max-height: 400px; margin-bottom: 0.5rem; }
+#term-output p { margin-bottom: 0.2rem; white-space: pre-wrap; word-break: break-word; }
+#term-output .term-cmd { color: var(--amber); }
+#term-output .term-err { color: #ff5555; }
+.term-input-line { display: flex; gap: 0.5rem; align-items: baseline; border-top: 1px dashed var(--green-dim); padding-top: 0.5rem; }
+.term-input-line label { color: var(--amber); white-space: nowrap; }
+#term-input {
+  flex: 1; background: none; border: none; outline: none;
+  color: var(--green); font-family: var(--font-body); font-size: 1.35rem;
+  caret-color: var(--green);
+  text-shadow: 0 0 6px rgba(0, 255, 65, 0.35);
+}
+.contact-direct { margin-top: 1.5rem; text-align: center; color: var(--green-mid); }
+
+/* ---------- Footer / toast ---------- */
+footer {
+  border-top: 2px solid var(--green-dim);
+  margin-top: 3rem; padding: 2rem 1rem; text-align: center;
+  color: var(--green-mid);
+}
+.footer-hint { font-size: 1rem; opacity: 0.55; margin-top: 0.4rem; }
+
+#toast {
+  position: fixed; bottom: 2rem; left: 50%; transform: translate(-50%, 200%);
+  background: var(--bg); border: 2px solid var(--amber); color: var(--amber);
+  font-family: var(--font-pixel); font-size: 0.8rem;
+  padding: 1rem 1.5rem; z-index: 300;
+  transition: transform 0.3s;
+}
+#toast.show { transform: translate(-50%, 0); }
+
+/* ---------- Konami glitch ---------- */
+body.glitch { animation: glitch 0.55s steps(2) 3; }
+@keyframes glitch {
+  0% { transform: translate(0); filter: none; }
+  25% { transform: translate(-6px, 2px); filter: hue-rotate(90deg) invert(0.15); }
+  50% { transform: translate(5px, -3px); filter: hue-rotate(-60deg); }
+  75% { transform: translate(-3px, 1px); filter: invert(0.25); }
+  100% { transform: translate(0); filter: none; }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .crt-scanlines { animation: none; }
+  .cursor, .boot-skip, .blink-slow, .continue-yes { animation: none; }
+  body.glitch { animation: none; }
+  #toast { transition: none; }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  body { font-size: 1.2rem; }
+  .screen { padding-top: 3rem; min-height: auto; }
+  .hero { flex-direction: column-reverse; align-items: flex-start; gap: 1.5rem; }
+  .hero-photo { align-self: center; }
+  .hud-logo { display: none; }
+  .hud-inner { justify-content: space-between; gap: 0.5rem; }
+  .level-title { font-size: 0.9rem; }
+  .quest-head h3 { font-size: 0.7rem; }
+}
